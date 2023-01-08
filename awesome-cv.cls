@@ -681,6 +681,21 @@
   \vspace{-4.0mm}
 }
 
+% Define an environment for cvsubitems(for cventry)
+\newenvironment{cvsubitems}{%
+  \vspace{1.0mm}
+  \begin{justify}
+  \begin{itemize}[leftmargin=4ex, nosep, noitemsep]
+    \setlength{\parskip}{0pt}
+    \renewcommand{\labelitemi}{\bullet}
+}{%
+  \end{itemize}
+  \end{justify}
+  \vspace{1.0mm}
+}
+
+
+
 
 %-------------------------------------------------------------------------------
 %                Commands for elements of Cover Letter
