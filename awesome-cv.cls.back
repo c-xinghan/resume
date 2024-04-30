@@ -88,7 +88,6 @@
   pdfsubject={},
   pdfkeywords={}
 }
-\RequirePackage{graphicx}
 
 
 %-------------------------------------------------------------------------------
@@ -97,7 +96,6 @@
 % Configure a directory location for fonts(default: 'fonts/')
 \newcommand*{\fontdir}[1][fonts/]{\def\@fontdir{#1}}
 \fontdir
-\graphicspath{{./images}}
 
 
 %-------------------------------------------------------------------------------
@@ -224,7 +222,6 @@
 % For elements of skill
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
-\newcommand*{\skilllinkstyle}[2]{{\href{#1}{\fontsize{9pt}{1em}\bodyfont\bfseries\color{awesome} #2}}}
 
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
@@ -283,14 +280,6 @@
 % Defines writer's email (optional)
 % Usage: \email{<email address>}
 \newcommand*{\email}[1]{\def\@email{#1}}
-
-% Defines writer's LFM profile (optional)
-% Usage: \lfm{<lfm profile>}
-\newcommand*{\lfm}[1]{\def\@lfm{#1}}
-
-% Defines writer's SRS profile (optional)
-% Usage: \srs{<srs profile>}
-\newcommand*{\srs}[1]{\def\@srs{#1}}
 
 % Defines writer's homepage (optional)
 % Usage: \homepage{<url>}
@@ -477,18 +466,6 @@
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}%
-        }%
-      \ifthenelse{\isundefined{\@lfm}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://lowfuelmotorsport.com/profile\@lfm}{\includegraphics[height = 1em]{lfm}\acvHeaderIconSep\@lfm}%
-        }%
-      \ifthenelse{\isundefined{\@srs}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.simracingsystem.com/globalroadsrs.php?a=nzzfvumeqc&b=tcnwuxsgfb&c=gomwqmcwlu&d=mzumepgqtw}{\includegraphics[height = 1em]{srs}\acvHeaderIconSep\@srs}%
         }%
       \ifthenelse{\isundefined{\@homepage}}%
         {}%
@@ -685,24 +662,11 @@
     \end{tabular*}
   \end{center}
 }
-
-% % Define a line of cv information(skill)
-% % Usage: \cvskill{<type>}{<skillset>}
+% Define a line of cv information(skill)
+% Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{%
 	\skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
-
-% Define a line of cv information(skill with link)
-% Usage: \cvskillwithlink{<type>}{<skillset>}{<link>}
-\newcommand*{\cvskillwithlink}[4]{%
-	\skilltypestyle{#1} & \skillsetstyle{#2} | \skilllinkstyle{#3}{#4} \\
-}
-
-% Define a line of cv information(skill without link)
-% Usage: \cvskill{<type>}{<skillset>}{<desc>}
-% \newcommand*{\cvskill}[3]{%
-% 	\skilltypestyle{#1} & \skillsetstyle{#2} | \skillsetstyle{#3} \\
-% }
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
